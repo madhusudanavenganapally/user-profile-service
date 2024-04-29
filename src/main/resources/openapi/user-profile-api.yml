@@ -1,0 +1,348 @@
+openapi: 3.0.3
+info:
+  title: VVR Group API
+  version: 1.0.0
+paths:
+  /profileCreation:
+    get:
+      summary: Get all profile creations
+      responses:
+        '200':
+          description: A list of profile creations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProfileCreation'
+    post:
+      summary: Create a new profile creation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileCreation'
+      responses:
+        '201':
+          description: Successfully created a new profile creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileCreation'
+    put:
+      summary: Update an existing profile creation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProfileCreation'
+      responses:
+        '200':
+          description: Successfully updated the profile creation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProfileCreation'
+    delete:
+      summary: Delete a profile creation
+      responses:
+        '204':
+          description: Successfully deleted the profile creation
+  /address:
+    get:
+      summary: Get all addresses
+      responses:
+        '200':
+          description: A list of addresses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Address'
+    post:
+      summary: Create a new address
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+      responses:
+        '201':
+          description: Successfully created a new address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+    put:
+      summary: Update an existing address
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Address'
+      responses:
+        '200':
+          description: Successfully updated the address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Address'
+    delete:
+      summary: Delete an address
+      responses:
+        '204':
+          description: Successfully deleted the address
+  /studentRegistration:
+    get:
+      summary: Get all student registrations
+      responses:
+        '200':
+          description: A list of student registrations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StudentRegistration'
+    post:
+      summary: Create a new student registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentRegistration'
+      responses:
+        '201':
+          description: Successfully created a new student registration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentRegistration'
+    put:
+      summary: Update an existing student registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StudentRegistration'
+      responses:
+        '200':
+          description: Successfully updated the student registration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StudentRegistration'
+    delete:
+      summary: Delete a student registration
+      responses:
+        '204':
+          description: Successfully deleted the student registration
+  /teacherRegistration:
+    get:
+      summary: Get all teacher registrations
+      responses:
+        '200':
+          description: A list of teacher registrations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeacherRegistration'
+    post:
+      summary: Create a new teacher registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeacherRegistration'
+      responses:
+        '201':
+          description: Successfully created a new teacher registration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeacherRegistration'
+    put:
+      summary: Update an existing teacher registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeacherRegistration'
+      responses:
+        '200':
+          description: Successfully updated the teacher registration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeacherRegistration'
+    delete:
+      summary: Delete a teacher registration
+      responses:
+        '204':
+          description: Successfully deleted the teacher registration
+components:
+  schemas:
+    ProfileCreation:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        username:
+          type: string
+          minLength: 1
+          maxLength: 50
+        password:
+          type: string
+          minLength: 1
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 255
+        createdOn:
+          type: string
+          format: date-time
+        lastUpdate:
+          type: string
+          format: date-time
+    Address:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        street:
+          type: string
+          minLength: 1
+          maxLength: 255
+        city:
+          type: string
+          minLength: 1
+          maxLength: 50
+        state:
+          type: string
+          minLength: 1
+          maxLength: 50
+        country:
+          type: string
+          minLength: 1
+          maxLength: 50
+        zipCode:
+          type: string
+          minLength: 1
+          maxLength: 10
+        createdOn:
+          type: string
+          format: date-time
+        lastUpdate:
+          type: string
+          format: date-time
+    StudentRegistration:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        studentName:
+          type: string
+          minLength: 1
+          maxLength: 50
+        course:
+          type: string
+          minLength: 1
+          maxLength: 100
+        registrationDate:
+          type: string
+          format: date-time
+        dateOfBirth:
+          type: string
+          format: date
+        gender:
+          type: string
+          minLength: 1
+          maxLength: 1
+        grade:
+          type: string
+          minLength: 1
+          maxLength: 10
+        fatherName:
+          type: string
+          minLength: 1
+          maxLength: 100
+        motherName:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 255
+        mobileNumber:
+          type: string
+          minLength: 1
+          maxLength: 15
+        firstLanguage:
+          type: string
+          minLength: 1
+          maxLength: 50
+        address:
+          $ref: '#/components/schemas/Address'
+        createdOn:
+          type: string
+          format: date-time
+        lastUpdate:
+          type: string
+          format: date-time
+    TeacherRegistration:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          maximum: 2147483647
+        teacherName:
+          type: string
+          minLength: 1
+          maxLength: 50
+        course:
+          type: string
+          minLength: 1
+          maxLength: 100
+        registrationDate:
+          type: string
+          format: date-time
+        dateOfBirth:
+          type: string
+          format: date
+        email:
+          type: string
+          format: email
+          minLength: 1
+          maxLength: 255
+        mobileNumber:
+          type: string
+          minLength: 1
+          maxLength: 15
+        createdOn:
+          type: string
+          format: date-time
+        lastUpdate:
+          type: string
+          format: date-time
